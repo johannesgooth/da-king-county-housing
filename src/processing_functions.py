@@ -130,3 +130,32 @@ def descriptive_label_mapping(df, column_name, category_mapping, category_order=
 
     return df
 
+def month_to_season(month):
+    """
+    This function takes a numeric representation of a month (from 1 to 12) as input and returns 
+    the corresponding season as a string ('Winter', 'Spring', 'Summer', or 'Autumn'). 
+    The function is useful for mapping individual months to their respective meteorological 
+    seasons, allowing for seasonal analysis of data.
+    
+    Parameters:
+    - month (int): An integer value representing the month (1 for January, 2 for February, ..., 12 for December).
+    
+    Returns:
+    - str: A string indicating the season that corresponds to the given month.
+    
+    Season Mapping:
+    - Winter: December (12), January (1), February (2)
+    - Spring: March (3), April (4), May (5)
+    - Summer: June (6), July (7), August (8)
+    - Autumn: September (9), October (10), November (11)
+    """
+    
+    if month in [12, 1, 2]:
+        return 'Winter'
+    elif month in [3, 4, 5]:
+        return 'Spring'
+    elif month in [6, 7, 8]:
+        return 'Summer'
+    else:  # 9, 10, 11
+        return 'Autumn'
+
