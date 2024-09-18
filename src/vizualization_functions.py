@@ -8,6 +8,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 from matplotlib.collections import PolyCollection
+from urllib.request import urlopen
 
 # Define custom color palette
 colors = ['#84a8cb', '#bd8585', '#a4bdc3', '#67cff5', '#fb9090', '#72acae', '#bcb9ba', '#e4e5e6']  # blue, red, green, blue_2, red_2, green_2, grey, light_grey
@@ -642,7 +643,7 @@ def plot_box_plot(df, value_col, category_col=None,
                   custom_legend_names=None, color_map=None,
                   label_font_size=11, y_tick_font_size=11, 
                   y_tick_intervals=(0, 900, 100),
-                  plot_title=None):
+                  plot_title=None, y_label=None):
     """
     Plots comparative box plots for different categories in one panel.
     It supports value distribution for multiple categories like city/countryside or renovated/unrenovated.
@@ -657,6 +658,7 @@ def plot_box_plot(df, value_col, category_col=None,
     - y_tick_font_size (int): Font size for the y-axis tick labels. Default is 11.
     - y_tick_intervals (tuple): Tick interval (start, end, step) for the y-axis.
     - plot_title (str): Title for the plot.
+    - y_label (str): Custom label for the y-axis. Default is None.
     
     Returns:
     - None: The function creates and shows the box plots.
@@ -723,7 +725,10 @@ def plot_box_plot(df, value_col, category_col=None,
         ax.tick_params(axis='y', labelsize=y_tick_font_size)
 
         # Set y-axis label
-        ax.set_ylabel(value_col.replace('_', ' ').title(), fontsize=label_font_size)
+        if y_label:
+            ax.set_ylabel(y_label, fontsize=label_font_size)
+        else:
+            ax.set_ylabel(value_col.replace('_', ' ').title(), fontsize=label_font_size)
 
         # Set the plot title if provided
         if plot_title:
@@ -767,7 +772,10 @@ def plot_box_plot(df, value_col, category_col=None,
         ax.tick_params(axis='y', labelsize=y_tick_font_size)
 
         # Set y-axis label
-        ax.set_ylabel(value_col.replace('_', ' ').title(), fontsize=label_font_size)
+        if y_label:
+            ax.set_ylabel(y_label, fontsize=label_font_size)
+        else:
+            ax.set_ylabel(value_col.replace('_', ' ').title(), fontsize=label_font_size)
 
         # Set the plot title if provided
         if plot_title:
@@ -790,7 +798,7 @@ def plot_violin_plot(df, value_col, category_col=None,
                      label_font_size=11, y_tick_font_size=11, 
                      y_tick_intervals=(0, 900, 100),
                      plot_title=None, scale='width', split=False,
-                     violin_width=0.3):
+                     violin_width=0.3, y_label=None):
     """
     Plots comparative violin plots for different categories in one panel.
     It supports value distribution for multiple categories like city/countryside or renovated/unrenovated.
@@ -809,6 +817,7 @@ def plot_violin_plot(df, value_col, category_col=None,
                    Other options are 'area', 'count'.
     - split (bool): If True, it splits the violins when the hue is used.
     - violin_width (float): Controls the width of the violins. Default is 0.3.
+    - y_label (str): Custom label for the y-axis. Default is None.
 
     Returns:
     - None: The function creates and shows the violin plots.
@@ -873,7 +882,10 @@ def plot_violin_plot(df, value_col, category_col=None,
         ax.tick_params(axis='y', labelsize=y_tick_font_size)
 
         # Set y-axis label
-        ax.set_ylabel(value_col.replace('_', ' ').title(), fontsize=label_font_size)
+        if y_label:
+            ax.set_ylabel(y_label, fontsize=label_font_size)
+        else:
+            ax.set_ylabel(value_col.replace('_', ' ').title(), fontsize=label_font_size)
 
         # Set the plot title if provided
         if plot_title:
@@ -914,7 +926,10 @@ def plot_violin_plot(df, value_col, category_col=None,
         ax.tick_params(axis='y', labelsize=y_tick_font_size)
 
         # Set y-axis label
-        ax.set_ylabel(value_col.replace('_', ' ').title(), fontsize=label_font_size)
+        if y_label:
+            ax.set_ylabel(y_label, fontsize=label_font_size)
+        else:
+            ax.set_ylabel(value_col.replace('_', ' ').title(), fontsize=label_font_size)
 
         # Set the plot title if provided
         if plot_title:
@@ -1230,4 +1245,56 @@ def plot_bar_plot(avg_price_data1, avg_price_data2=None,
         )
 
     # Show the figure
+    fig.show()
+
+def plot_choropleth_map(df, price_col='price', zipcode_col='zipcode',
+                        center_lat=47.407, center_lon=-121.9,
+                        zoom=8, height=700, width=700,
+                        geojson_url='https://raw.githubusercontent.com/OpenDataDE/State-zip-code-GeoJSON/master/wa_washington_zip_codes_geo.min.json'):
+    """
+    Plots a choropleth map with a custom color scale.
+
+    Parameters:
+    - df (pd.DataFrame): Data frame containing the data.
+    - price_col (str): Column name for the data to be represented (default 'price').
+    - zipcode_col (str): Column name for the zip codes (default 'zipcode').
+    - colors (list): List of three color codes or names for the color scale (default None).
+    - center_lat (float): Latitude for the map center (default 47.407).
+    - center_lon (float): Longitude for the map center (default -121.9).
+    - zoom (int): Zoom level for the map (default 8).
+    - height (int): Height of the map figure in pixels (default 700).
+    - width (int): Width of the map figure in pixels (default 700).
+    - geojson_url (str): URL to the GeoJSON file (default provided for Washington state).
+
+    Returns:
+    - None: Displays the choropleth map.
+    """
+
+    # Create the Plotly color scale
+    plotly_color_scale = [
+        (0.0, colors[0]),  # Minimum value
+        (0.5, colors[-1]),  # Midpoint value
+        (1.0, colors[1])   # Maximum value
+    ]
+
+    # Load the GeoJSON data
+    with urlopen(geojson_url) as response:
+        geojson_data = json.load(response)
+
+    # Create the choropleth map
+    fig = px.choropleth_mapbox(
+        data_frame=df,
+        geojson=geojson_data,
+        featureidkey='properties.ZCTA5CE10',
+        locations=zipcode_col,
+        color=price_col,
+        mapbox_style='open-street-map',
+        center=dict(lat=center_lat, lon=center_lon),
+        zoom=zoom,
+        height=height,
+        width=width,
+        color_continuous_scale=plotly_color_scale
+    )
+
+    # Display the figure
     fig.show()

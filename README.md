@@ -2,7 +2,7 @@
 
 ## Executive Summary
 
-This data analytics project offers strategic insights and actionable recommendations for real estate investments in King County, USA. Through a comprehensive analysis of housing data, we have identified key factors that influence property prices, including location, property size, condition, and timing. Leveraging these insights, we have developed targeted strategies for our client, William Rodriguez, who seeks to optimize investment returns by purchasing two properties for himself and his wife: one in an urban area and one in the countryside.
+This data analytics project offers strategic insights and actionable recommendations for real estate investments in King County, USA. Through a comprehensive analysis of housing data, we have identified key factors that influence property prices, including location, property size, condition, and timing. Leveraging these insights, we have developed targeted strategies for our client, William Rodriguez, who seeks to optimize investment by purchasing two properties for himself and his wife: one in an urban area and one in the countryside.
 
 For the city property, William’s priority is a centrally located, ready-to-move-in home. For the countryside property, he is targeting a non-renovated home with the goal of purchasing at the optimal time.
 
@@ -10,7 +10,7 @@ For the city property, William’s priority is a centrally located, ready-to-mov
 
 Our key findings suggest that purchasing smaller, well-maintained homes in centrally located city areas, and non-renovated properties in desirable suburban areas during the winter, can lead to significant cost savings. 
 
-We recommend setting aside a total budget of $612,000 for the two properties, with additional funds allocated for renovating the countryside home. These recommendations have been validated through analysis of average house prices across various zip codes, demonstrating their effectiveness across different regions.
+We recommend setting aside a total budget of $665,000 for the two properties, with additional funds allocated for renovating the countryside home. These recommendations have been validated through analysis of average house prices across various zip codes, demonstrating their effectiveness across different regions.
 
 ## Table of Contents
 
