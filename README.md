@@ -1,173 +1,111 @@
-[![Shipping files](https://github.com/neuefische/ds-eda-project-template/actions/workflows/workflow-03.yml/badge.svg?branch=main&event=workflow_dispatch)](https://github.com/neuefische/ds-eda-project-template/actions/workflows/workflow-03.yml)
-# ds-project-template
+# King County Housing Data Analysis
 
-Template for creating ds simple projects
+## Executive Summary
 
-## Requirements
+This data analytics project offers strategic insights and actionable recommendations for real estate investments in King County, USA. Through a comprehensive analysis of housing data, we have identified key factors that influence property prices, including location, property size, condition, and timing. Leveraging these insights, we have developed targeted strategies for our client, William Rodriguez, who seeks to optimize investment by purchasing two properties for himself and his wife: one in an urban area and one in the countryside.
 
-- pyenv
-- python==3.11.3
+For the city property, William’s priority is a centrally located, ready-to-move-in home. For the countryside property, he is targeting a non-renovated home with the goal of purchasing at the optimal time.
 
-## Setup
+(Note: William Rodriguez is a fictional client; any resemblance to actual persons is purely coincidental.)
 
-One of the first steps when starting any data science project is to create a virtual environment. For this project you have to create this environment from scratch yourself. However, you should be already familiar with the commands you will need to do so. The general workflow consists of... 
+Our key findings suggest that purchasing smaller, well-maintained homes in centrally located city areas, and non-renovated properties in desirable suburban areas during the winter, can lead to significant cost savings. 
 
-* setting the python version locally to 3.11.3
-* creating a virtual environment using the `venv` module
-* activating your newly created environment 
-* upgrading `pip` (This step is not absolutely necessary, but will save you trouble when installing some packages.)
-* installing the required packages via `pip`
+We recommend setting aside a total budget of $665,000 for the two properties, with additional funds allocated for renovating the countryside home. These recommendations have been validated through analysis of average house prices across various zip codes, demonstrating their effectiveness across different regions.
 
-At the end, you want to make sure that people who are interested in your project can create an identical environment on their own computer in order to be able to run your code without running into errors. Therefore you can create a `requirements file` and add it to your repository. You can create such a file by running the following command: 
+## Table of Contents
 
-```bash
-pip freeze > requirements.txt
-```
+1. [Introduction](#introduction)
+2. [Project Structure](#project-structure)
+3. [Installation](#installation)
+4. [Usage](#usage)
+5. [Results and Insights](#results-and-insights)
+6. [Final Recommendations](#final-recommendations)
+7. [License](#license)
+8. [Acknowledgments](#acknowledgments)
 
-*Note: In rare case such a requirements file created with `pip freeze` might not ensure that another (especially M1 chip) user can install and execute it properly. This can happen if libraries need to be compiled (e.g. SciPy). Then it also depends on environment variables and the actual system libraries.*
+## Introduction
 
-### Unit testing (Optional)
+The King County Housing Data Analysis project is designed to assist in making informed real estate investment decisions. Through detailed analysis of housing data, the project identifies key factors that influence property prices and availability, providing actionable recommendations tailored to specific investment strategies.
 
-If you write python scripts for your data processing methods, you can also write unit tests. In order to run the tests execute in terminal:
+This project is particularly useful for real estate investors, data analysts, and professionals in the housing market who seek to leverage data-driven insights for better decision-making.
 
-```bash
-pytest
-```
+## Project Structure
 
-This command will execute all the functions in your project that start with the word **test**.
+The project is organized into the following Jupyter notebooks:
 
+1. **01_Data_Collection.ipynb**: Collects and compiles the necessary dataset for the project.
+2. **02_Data_Cleaning_and_Preprocessing.ipynb**: Prepares the data by cleaning and transforming it into a suitable format for analysis.
+3. **03_Exploratory_Data_Analysis.ipynb**: Conducts exploratory data analysis to uncover trends and patterns in the data.
+4. **04_Business_Case_and_Hypothesis_Testing.ipynb**: Tests hypotheses and answers key business questions related to real estate investment.
+5. **05_Final_Recommendations_and_Strategy.ipynb**: Summarizes the findings and provides final recommendations for the client.
 
-## Set up your Environment
-This repo contains a requirements.txt file with a list of all the packages and dependencies you will need. Before you install the virtual environment, make sure to install postgresql if you haven't done it before.
+## Installation
 
- - Check the **postgresql version**  by run the following commands:
-    ```sh
-    psql --version
-    ```
-    If you haven't installed it yet, begin at `step_1`. Otherwise, proceed to `step_2`.
+To run this project locally, follow these steps:
 
+1. **Clone the repository:**
 
-Before you can start with plotly in Jupyter Lab you have to install node.js (if you haven't done it before).
-- Check **Node version**  by run the following commands:
-    ```sh
-    node -v
-    ```
-    If you haven't installed it yet, begin at `step_2`. Otherwise, proceed to `step_3`.
-
-
-### **`macOS`** type the following commands : 
-
-- `Step_1:` Update Homebrew and install Postgresql by following commands:
-    ```sh
-    brew update
-    brew install postgresql@14
-    ```
-  Restart Your Terminal and than check the **postgresql version**  by run the following commands:
-     ```sh
-    psql --version
-    ```
-  If `psql --version` doesn't display the version, add PostgreSQL to your macOS PATH by following these steps:
-
-  * Find and copy the PostgreSQL bin directory on macOS.
-  
-    The default path is typically `/Library/PostgreSQL/<version>/bin`, where is your PostgreSQL version.
-  * Edit the .zshrc or a similar .conf file using a text editor like Nano, Vim, or VSCode.
-
-     ```sh
-    nano ~/.zshrc
-    ```
-  * Add the following line to the .zshrc file. Make sure to replace <version> with your PostgreSQL version.
-    ```sh
-    export PATH="/Library/PostgreSQL/<version>/bin:$PATH"
-    ```
-  * Save and exit the text editor. In nano, you can do this by pressing Ctrl + O, then Enter, and then Ctrl + X to exit.
-  * Restart Your Terminal
-    ```sh
-    source ~/.zshrc
-    psql --version
-    ```
-
-
-- `Step_2:` Update Homebrew and install Node by following commands:
-    ```sh
-    brew update
-    brew install node
-    ```
-
-- `Step_3:` Install the virtual environment and the required packages by following commands:
-
-    ```BASH
-    pyenv local 3.11.3
-    python -m venv .venv
-    source .venv/bin/activate
-    pip install --upgrade pip
-    pip install -r requirements.txt
-    ```
-### **`WindowsOS`** type the following commands :
-
-- `Step_1:` Update Chocolatey and install Postgresql by following commands:
-    ```sh
-    choco upgrade chocolatey
-    choco install postgresql14
-    ```
-    Restart Your Terminal and than check the **postgresql version**  by run the following commands:
-     ```sh
-    psql --version
-    ```
-  If `psql --version` doesn't display the version, add PostgreSQL to your winOS PATH by following these steps:
-
-  * Find and copy the PostgreSQL bin directory on winOS.
-
-    The default path is typically `C:\Program Files\PostgreSQL\<version>\bin`, where <version> is your PostgreSQL version.
-
-  * Open Command Prompt as Administrator:
-
-    * Search for "Command Prompt" in your Start menu.
-    * Right-click on "Command Prompt" and select "Run as administrator."
-
-  * Add PostgreSQL to PATH:
-    * Replace 14 with your PostgreSQL version if it's different.
-
-    ```PowerShell
-    setx PATH "$($env:PATH);C:\Program Files\PostgreSQL\14\bin"
-    ```
-  * Close the Administrator Command Prompt window.
-
-
-  * Open a new Terminal and run the following command 
-    ```PowerShell
-    psql --version
-    ```
-
-- `Step_2:` Update Chocolatey and install Node by following commands:
-    ```sh
-    choco upgrade chocolatey
-    choco install nodejs
-    ```
-
-- `Step_3:` Install the virtual environment and the required packages by following commands.
-
-   For `PowerShell` CLI :
-
-    ```PowerShell
-    python -m venv .venv
-    .venv\Scripts\Activate.ps1
-    pip install --upgrade pip
-    pip install -r requirements.txt
-    ```
-
-    For `Git-Bash` CLI :
-    ```
-    python -m venv .venv
-    source .venv/Scripts/activate
-    pip install --upgrade pip
-    pip install -r requirements.txt
-    ```
- 
-
- **`Note:`**
-    If you encounter an error when trying to run `pip install --upgrade pip`, try using the following command:
-
-   ```Bash
-   python.exe -m pip install --upgrade pip
+   ```bash
+   git clone https://github.com/your-username/king-county-housing-analysis.git
+   cd king-county-housing-analysis
    ```
+
+2. **Create and activate a virtual environment (optional but recommended):**
+
+   ```bash
+   python -m venv myenv
+   source myenv/bin/activate  # On Windows: myenv\Scripts\activate
+   ```
+
+3. **Install the required dependencies:**
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Launch Jupyter Notebook:**
+
+   ```bash
+   jupyter notebook
+   ```
+
+## Usage
+
+### Running the Analysis
+
+1. **Data Collection**: Start with `01_Data_Collection.ipynb` to gather the necessary data from the specified sources.
+2. **Data Cleaning and Preprocessing**: Use `02_Data_Cleaning_and_Preprocessing.ipynb` to clean and prepare the data.
+3. **Exploratory Data Analysis**: Run `03_Exploratory_Data_Analysis.ipynb` to explore the data and uncover insights.
+4. **Hypothesis Testing**: Test key hypotheses using `04_Business_Case_and_Hypothesis_Testing.ipynb`.
+5. **Final Recommendations**: Review the final strategic recommendations in `05_Final_Recommendations_and_Strategy.ipynb`.
+
+### Streamlit Dashboard
+
+A Streamlit dashboard can be run using the provided `app.py` file to visualize and interact with the analysis:
+
+```bash
+streamlit run app.py
+```
+
+## Results and Insights
+
+The analysis provides key insights into the King County housing market, including:
+
+- The impact of location on property prices.
+- The correlation between property size and value.
+- The effect of property condition and renovation on market prices.
+- Optimal timing for purchasing properties in different areas.
+
+These insights are used to formulate strategic recommendations that can guide real estate investments.
+
+## Final Recommendations
+
+Based on the analysis, we recommend setting aside a budget of $612,000 for the purchase of two properties, one in the city and one in the countryside, with additional funds for renovation costs. These recommendations are validated against average house prices across various zip codes and are shown to perform exceptionally well in all areas.
+
+## License
+
+This project is licensed under the MIT License.
+
+## Acknowledgments
+
+Special thanks to NeueFische GmbH for providing the dataset hosted on their AWS server, and to the contributors and the open-source community for their invaluable tools and resources, which made this project possible.
