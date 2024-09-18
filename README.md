@@ -1,4 +1,3 @@
-# King County Housing Data Analysis
 ![App Screenshot](.streamlit/app_header.png "This is the header of the app")
 ## Executive Summary
 
