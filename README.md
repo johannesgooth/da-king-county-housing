@@ -100,7 +100,7 @@ These insights are used to formulate strategic recommendations that can guide re
 
 ## Final Recommendations
 
-Based on the analysis, we recommend setting aside a budget of $612,000 for the purchase of two properties, one in the city and one in the countryside, with additional funds for renovation costs. These recommendations are validated against average house prices across various zip codes and are shown to perform exceptionally well in all areas.
+Based on the analysis, we recommend setting aside a budget of $665,000 for the purchase of two properties, one in the city and one in the countryside, with additional funds for renovation costs. These recommendations are validated against average house prices across various zip codes and are shown to perform exceptionally well in all areas.
 
 ## License
 
