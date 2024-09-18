@@ -1,5 +1,5 @@
 # King County Housing Data Analysis
-
+![App Screenshot](.streamlit/app_header.png "This is the header of the app")
 ## Executive Summary
 
 This data analytics project offers strategic insights and actionable recommendations for real estate investments in King County, USA. Through a comprehensive analysis of housing data, we have identified key factors that influence property prices, including location, property size, condition, and timing. Leveraging these insights, we have developed targeted strategies for our client, William Rodriguez, who seeks to optimize investment by purchasing two properties for himself and his wife: one in an urban area and one in the countryside.
