@@ -32,11 +32,11 @@ This project is particularly useful for real estate investors, data analysts, an
 
 The project is organized into the following Jupyter notebooks:
 
-1. **01_Data_Collection.ipynb**: Collects and compiles the necessary dataset for the project.
-2. **02_Data_Cleaning_and_Preprocessing.ipynb**: Prepares the data by cleaning and transforming it into a suitable format for analysis.
-3. **03_Exploratory_Data_Analysis.ipynb**: Conducts exploratory data analysis to uncover trends and patterns in the data.
-4. **04_Business_Case_and_Hypothesis_Testing.ipynb**: Tests hypotheses and answers key business questions related to real estate investment.
-5. **05_Final_Recommendations_and_Strategy.ipynb**: Summarizes the findings and provides final recommendations for the client.
+1. **01_data_collection.ipynb**: Collects and compiles the necessary dataset for the project.
+2. **02_data_cleaning_and_preprocessing.ipynb**: Prepares the data by cleaning and transforming it into a suitable format for analysis.
+3. **03_exploratory_data_analysis.ipynb**: Conducts exploratory data analysis to uncover trends and patterns in the data.
+4. **04_hypothesis_analysis_and_insights.ipynb**: Tests hypotheses and answers key business questions related to real estate investment.
+5. **05_final_Recommendations_and_strategy.ipynb**: Summarizes the findings and provides final recommendations for the client.
 
 ## Installation
 
@@ -72,11 +72,11 @@ To run this project locally, follow these steps:
 
 ### Running the Analysis
 
-1. **Data Collection**: Start with `01_Data_Collection.ipynb` to gather the necessary data from the specified sources.
-2. **Data Cleaning and Preprocessing**: Use `02_Data_Cleaning_and_Preprocessing.ipynb` to clean and prepare the data.
-3. **Exploratory Data Analysis**: Run `03_Exploratory_Data_Analysis.ipynb` to explore the data and uncover insights.
-4. **Hypothesis Testing**: Test key hypotheses using `04_Business_Case_and_Hypothesis_Testing.ipynb`.
-5. **Final Recommendations**: Review the final strategic recommendations in `05_Final_Recommendations_and_Strategy.ipynb`.
+1. **Data Collection**: Start with `01_data_collection.ipynb` to gather the necessary data from the specified sources.
+2. **Data Cleaning and Preprocessing**: Use `02_data_cleaning_and_preprocessing.ipynb` to clean and prepare the data.
+3. **Exploratory Data Analysis**: Run `03_exploratory_data_analysis.ipynb` to explore the data and uncover insights.
+4. **Hypothesis Testing**: Test key hypotheses using `04_hypothesis_testing_and_insights.ipynb`.
+5. **Final Recommendations**: Review the final strategic recommendations in `05_final_Recommendations_and_strategy.ipynb`.
 
 ### Streamlit Dashboard
 
