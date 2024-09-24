@@ -18,3 +18,4 @@ plotly==5.20.0
 scikit-learn==1.2.2
 streamlit==1.38.0
 tensorflow==2.16.1
+geopy==2.4.1

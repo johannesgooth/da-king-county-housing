@@ -8,6 +8,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 from matplotlib.collections import PolyCollection
+import json
 from urllib.request import urlopen
 
 # Define custom color palette

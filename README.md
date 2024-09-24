@@ -33,10 +33,10 @@ This project is particularly useful for real estate investors, data analysts, an
 The project is organized into the following Jupyter notebooks:
 
 1. **01_data_collection.ipynb**: Collects and compiles the necessary dataset for the project.
-2. **02_data_cleaning_and_preprocessing.ipynb**: Prepares the data by cleaning and transforming it into a suitable format for analysis.
+2. **02_data_preparation.ipynb**: Prepares the data by cleaning and transforming it into a suitable format for analysis.
 3. **03_exploratory_data_analysis.ipynb**: Conducts exploratory data analysis to uncover trends and patterns in the data.
 4. **04_hypothesis_analysis_and_insights.ipynb**: Tests hypotheses and answers key business questions related to real estate investment.
-5. **05_final_Recommendations_and_strategy.ipynb**: Summarizes the findings and provides final recommendations for the client.
+5. **05_final_recommendations_and_strategy.ipynb**: Summarizes the findings and provides final recommendations for the client.
 
 ## Installation
 
