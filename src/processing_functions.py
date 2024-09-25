@@ -13,21 +13,25 @@ def convert_columns_to_integers(df):
     pd.DataFrame: The DataFrame with specified columns converted to integers.
     """
     
-    # Convert 'yr_renovated'
-    df['yr_renovated'].replace(np.nan, 0.000, inplace=True)  # Replace NaN entries with 0.000
-    df['yr_renovated'] = (df['yr_renovated'] / 10).astype('int64')  # Correct for factor 10 and convert to int64
-    df['yr_renovated'] = df['yr_renovated'].replace(0, pd.NA)  # Replace 0's with <NA>
-
-    # Convert other columns to int64
-    int_columns = ['bedrooms', 'sqft_living', 'sqft_lot', 'sqft_above', 'sqft_living15', 'sqft_lot15', 'price']
-    for col in int_columns:
-        df[col] = df[col].astype('int64')
+    # Convert 'yr_renovated' if it exists
+    if 'yr_renovated' in df.columns:
+        df['yr_renovated'].replace(np.nan, 0.000, inplace=True)  # Replace NaN entries with 0.000
+        df['yr_renovated'] = (df['yr_renovated'] / 10).astype('Int64')  # Use 'Int64' instead of 'int64'
+        df['yr_renovated'] = df['yr_renovated'].replace(0, pd.NA)  # Replace 0's with <NA>
     
-    # Convert 'sqft_basement'
-    df['sqft_basement'].replace(np.nan, -1.000, inplace=True)  # Replace NaN entries with -1.000 as a placeholder
-    df['sqft_basement'] = df['sqft_basement'].astype('int64')  # Convert to int64
-    df['sqft_basement'] = df['sqft_basement'].replace(-1, pd.NA)  # Replace -1's with <NA>
-
+    # Convert other columns to Int64 (nullable integer type) if they exist
+    int_columns = ['bedrooms', 'sqft_living', 'sqft_lot', 'sqft_above', 
+                   'sqft_living15', 'sqft_lot15', 'price']
+    for col in int_columns:
+        if col in df.columns:
+            df[col] = df[col].astype('Int64')  # Use 'Int64' instead of 'int64'
+    
+    # Convert 'sqft_basement' if it exists
+    if 'sqft_basement' in df.columns:
+        df['sqft_basement'].replace(np.nan, -1.000, inplace=True)  # Replace NaN entries with -1.000 as a placeholder
+        df['sqft_basement'] = df['sqft_basement'].astype('Int64')  # Use 'Int64' instead of 'int64'
+        df['sqft_basement'] = df['sqft_basement'].replace(-1, pd.NA)  # Replace -1's with <NA>
+    
     return df
 
 def convert_to_boolean(df, column_name, yes_value=1.000, no_value=0.000):
@@ -80,12 +84,15 @@ def distance_to_center(row):
     row (pd.Series): A row from the DataFrame containing 'lat' and 'long' columns.
 
     Returns:
-    float: The distance from the house to Seattle's center in miles.
+    float: The distance from the house to Seattle's center in miles, or np.nan if coordinates are invalid.
     """
     seattle_center = (47.6062, -122.3321)
     house_location = (row['lat'], row['long'])
 
-    return geodesic(seattle_center, house_location).miles
+    try:
+        return geodesic(seattle_center, house_location).miles
+    except (ValueError, TypeError):
+        return np.nan
 
 def classify_by_zip_code(zipcode):
     '''A function that classifies the data according to the ZIP codes of Seattle'''
@@ -143,19 +150,22 @@ def month_to_season(month):
     Returns:
     - str: A string indicating the season that corresponds to the given month.
     
-    Season Mapping:
-    - Winter: December (12), January (1), February (2)
-    - Spring: March (3), April (4), May (5)
-    - Summer: June (6), July (7), August (8)
-    - Autumn: September (9), October (10), November (11)
+    Raises:
+    - ValueError: If the month is not an integer between 1 and 12.
+    - TypeError: If the month is not an integer.
     """
     
-    if month in [12, 1, 2]:
+    if not isinstance(month, int):
+        raise TypeError("Month must be an integer.")
+    
+    if month == 12 or month in [1, 2]:
         return 'Winter'
     elif month in [3, 4, 5]:
         return 'Spring'
     elif month in [6, 7, 8]:
         return 'Summer'
-    else:  # 9, 10, 11
+    elif month in [9, 10, 11]:
         return 'Autumn'
+    else:
+        raise ValueError("Month must be between 1 and 12.")
 

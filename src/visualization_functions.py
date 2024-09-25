@@ -337,6 +337,7 @@ def plot_correlation_matrix_heatmap(corr_mtrx, figsize=(14, 12), annot=True, lin
         mask=mask,  # Apply the mask
         cmap=custom_diverging_palette,  # Custom color palette
         annot=annot,  # Annotate with correlation values
+        fmt=".2f",     # Format annotations
         linewidths=linewidths,  # Line width for cell borders
         cbar_kws={"shrink": .8}  # Shrink colorbar slightly
     )
@@ -363,12 +364,12 @@ def plot_correlation_matrix_heatmap(corr_mtrx, figsize=(14, 12), annot=True, lin
     plt.show()
 
 def plot_map(df, lat_col='lat', lon_col='long', hover_name_col='id', 
-               location_type_col=None, custom_legend_names=None, 
-               color_map=None, category_order=None, labels=None, 
-               single_color=colors[2], house_size=5, zoom=8.55, 
-               map_center={"lat": 47.45, "lon": -122.10}, map_style="carto-positron", 
-               seattle_center={"lat": 47.6062, "lon": -122.3321}, 
-               add_seattle_center=True):
+             location_type_col=None, custom_legend_names=None, 
+             color_map=None, category_order=None, labels=None, 
+             single_color=colors[2], house_size=5, zoom=8.55, 
+             map_center={"lat": 47.45, "lon": -122.10}, map_style="carto-positron", 
+             seattle_center={"lat": 47.6062, "lon": -122.3321}, 
+             add_seattle_center=True):
     """
     Creates a unified map for both single color or categorized (e.g., by location type) cases,
     with options for custom legend names and adding Seattle's center marker.
@@ -453,7 +454,7 @@ def plot_map(df, lat_col='lat', lon_col='long', hover_name_col='id',
                 size=house_size,
                 color=single_color,
             ),
-            name='Houses in the King County Dataset',  # Legend name
+            name='Houses in the King County Dataset',
             showlegend=True,
         )
         fig.add_trace(house_trace)

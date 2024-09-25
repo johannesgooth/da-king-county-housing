@@ -17,6 +17,12 @@ def apply_category_order_from_json(df, column_name, json_filepath):
     with open(json_filepath, 'r') as f:
         category_order = json.load(f)
 
+    if not isinstance(category_order, list):
+        raise TypeError("Category order must be a list.")
+
+    if not category_order:
+        raise ValueError("Category order cannot be empty.")
+
     # Reapply the order to the specified column as a Categorical feature
     df[column_name] = pd.Categorical(df[column_name], categories=category_order, ordered=True)
 
