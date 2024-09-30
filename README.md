@@ -45,7 +45,7 @@ To run this project locally, follow these steps:
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/your-username/king-county-housing-analysis.git
+   git clone https://github.com/johannesgooth/da-king-county-housing.git
    cd king-county-housing-analysis
    ```
 
