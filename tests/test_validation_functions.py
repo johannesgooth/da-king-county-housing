@@ -10,7 +10,7 @@ parent_dir = os.path.dirname(current_dir)
 src_dir = os.path.join(parent_dir, 'src')
 sys.path.insert(0, parent_dir)
 
-from validation_functions import (
+from src.validation_functions import (
     compare_dataframes,
     check_duplicates,
     check_float_columns_for_int_conversion,

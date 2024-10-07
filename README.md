@@ -101,6 +101,22 @@ These insights are used to formulate strategic recommendations that can guide re
 
 Based on the analysis, we recommend setting aside a budget of $665,000 for the purchase of two properties, one in the city and one in the countryside, with additional funds for renovation costs. These recommendations are validated against average house prices across various zip codes and are shown to perform exceptionally well in all areas.
 
+## Testing
+
+Comprehensive testing has been implemented to ensure the reliability and accuracy of data processing and model predictions. The `tests/` directory contains unit and integration tests that validate the functionality of various components within the project. These tests help in maintaining code quality and facilitate future enhancements.
+
+To run the tests, navigate to the project directory and execute:
+
+```bash
+pytest tests/
+```
+
+Ensure that you have `pytest` installed, which can be added to your `requirements.txt` or installed separately:
+
+```bash
+pip install pytest
+```
+
 ## License
 
 This project is licensed under the MIT License.

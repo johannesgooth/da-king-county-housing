@@ -11,7 +11,7 @@ current_dir = os.path.dirname(os.path.abspath(__file__))
 parent_dir = os.path.dirname(current_dir)
 sys.path.insert(0, parent_dir)
 
-from processing_functions import (
+from src.processing_functions import (
     convert_columns_to_integers,
     convert_to_boolean,
     remove_older_duplicates,

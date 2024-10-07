@@ -15,7 +15,7 @@ import plotly.graph_objects as go
 import seaborn as sns
 import plotly.express as px
 
-from visualization_functions import (
+from src.visualization_functions import (
     plot_box_plots,
     plot_violin_plots,
     plot_histograms,
